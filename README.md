@@ -1,5 +1,5 @@
 # Web-signing PDF files with client certificates
-# A module that allows web applications sign PDF files using locally installed certificates
+## A module that allows web applications sign PDF files using locally installed certificates
 
 A desktop module that runs in the background and allows a browser to digitally sign a PDF file uploaded by the user, using her own certificates installed in the Windows Certificates Store.
 
@@ -26,16 +26,16 @@ The desktop module solution uses the following software stack:
 
 ## Installation
 
-Build the solution and run the generated .msi installer.
+Build the solution in release mode and run the generated .msi installer.
 
-The setup package installs the desktop module and configures it to autorun after user login.
+The setup package installs the desktop module and configures it to autorun after Windows login.
 
 The setup also installs a couple of certificates needed for SSL communication between the desktop module and the page from the web project.
 
-After the module is installed and running, launch the web project, upload a PDF and click the Sign button. Select a certificate from the list and that's it, wait for the signed PDF file is prepared for downloading.
+After the module is installed and running, launch the web project, upload a PDF and click the "Sign file" button. Select a certificate from the list and that's it, wait for the signed PDF file is prepared for downloading.
 
 ## Blog post
-There's a blog post detailing all the stuff about this project, from its internal workings to the build and installation procedures. You can find it at https://alegaio.blogspot.com/2022/10/digitally-sign-pdf-files-using-browser.html
+There's a blog post detailing all the stuff about this project, from its internal workings to the build and installation procedures. You can find it at https://www.alexgaio.com/post/signing-pdf-files-from-a-web-application
 
 ## License
 
