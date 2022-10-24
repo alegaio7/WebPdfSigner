@@ -1,0 +1,25 @@
+[req]
+distinguished_name = dn
+req_extensions = v3_req
+x509_extensions = v3_req
+prompt = no
+
+[CA_default]
+copy_extensions = copy
+
+[dn]
+C=AR
+ST=Buenos Aires
+L=Buenos Aires
+O=DesktopModule
+emailAddress=dummy@email.com
+CN = localhost
+
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS = localhost
+

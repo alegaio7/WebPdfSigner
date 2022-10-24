@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+	<String Id="NewerModuleAlreadyInstalled">A newer version of [ProductName] is already installed.</String>
+	<String Id="CompletePackage">Complete package</String>
+	<String Id="ServiceDescription">Allows interacting with digital signature certificates installed locally</String>
+</WixLocalization>

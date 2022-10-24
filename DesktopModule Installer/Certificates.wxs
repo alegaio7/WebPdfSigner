@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+	<Fragment>
+		<Binary Id="Certificate.CA.Binary" SourceFile="..\Certificates\DesktopModuleCA.cer" />
+		<Binary Id="Certificate.DesktopModule.Binary" SourceFile="..\Certificates\DesktopModule.pfx" />
+	</Fragment>
+	<Fragment>
+		<ComponentGroup Id="Component.InstalledCertificates">
+			<ComponentRef Id="DesktopModuleCA.cer" />
+			<ComponentRef Id="DesktopModule.pfx" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>

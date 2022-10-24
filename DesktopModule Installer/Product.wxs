@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+	<Product Id="6E420B8D-768C-4AE3-B429-18861BC290B8" Name="Desktop Module" Language="1033" Codepage="850" Version="1.0.0.0" Manufacturer="Ale Gaio" UpgradeCode="71386DCC-72D5-4602-BF84-820181669A4E">
+		<Package Id="*" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated"/>
+
+		<MajorUpgrade DowngradeErrorMessage="!(loc.NewerModuleAlreadyInstalled)" />
+		<Media Id="1" Cabinet="ISSetup.cab" EmbedCab="yes" />
+
+		<Property Id='ARPCONTACT'>https://github.com/alegaio7</Property>
+		<Property Id='ARPHELPLINK'>https://github.com/alegaio7</Property>
+		<Property Id='ARPURLINFOABOUT'>https://github.com/alegaio7</Property>
+		<Property Id="ARPPRODUCTICON" Value="DesktopModuleICON" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder" Name="PFiles">
+				<Directory Id="INSTALLDIR" Name="Desktop Module" >
+					<Directory Id="DirectoryCertificates" Name="Certificates">
+						<Component Id="DesktopModuleCA.cer" Guid="*">
+							<File Id="DesktopModuleCA.cer" Name="CA.cer" Source="..\Certificates\DesktopModuleCA.cer" />
+							<iis:Certificate Id="Certificate.CA" Name="DesktopModuleCA.cer" Request="no" StoreLocation="localMachine" StoreName="root" Overwrite="yes" BinaryKey="Certificate.CA.Binary" />
+						</Component>
+						<Component Id="DesktopModule.pfx" Guid="*">
+							<File Id="DesktopModule.pfx" Name="DesktopModule.pfx" Source="..\Certificates\DesktopModule.pfx" />
+							<iis:Certificate Id="Certificate.DesktopModule" Name="DesktopModule.pfx" Request="no" StoreLocation="localMachine" StoreName="personal" Overwrite="yes" BinaryKey="Certificate.DesktopModule.Binary" PFXPassword="desktop" />
+						</Component>
+					</Directory>
+				</Directory>
+			</Directory>
+		</Directory>
+
+		<Feature Id="Complete" Title="Desktop Module" Description="!(loc.CompletePackage)" Display="hidden" Level="1" ConfigurableDirectory="INSTALLDIR">
+			<ComponentGroupRef Id="ModuleFiles"/>
+			<ComponentGroupRef Id="Component.InstalledCertificates" />
+			<ComponentRef Id="IconTrayAutoStart" />
+		</Feature>
+
+		<DirectoryRef Id="TARGETDIR">
+			<Component Id="IconTrayAutoStart" Guid="2D2756E8-FBB8-45EB-BDB8-CE864BAF6C31" KeyPath="yes">
+				<RegistryValue Id="ITAS" Root="HKMU" Action="write"
+							   Key="Software\Microsoft\Windows\CurrentVersion\Run"
+							   Name="Desktop Module"
+							   Value='"[INSTALLDIR]DesktopModule.exe" /min'
+							   Type="string" />
+				<Condition>IconTrayAutoStartViaRegistry</Condition>
+			</Component>
+		</DirectoryRef>
+
+		<Icon Id="DesktopModuleICON" SourceFile="..\DesktopModule\gear.ico" />
+
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+		<Property Id="IconTrayAutoStartViaRegistry">1</Property>
+		<Property Id="WixShellExecTarget" Value="[#DesktopModuleEXE]" />
+
+		<PropertyRef Id="WIX_ACCOUNT_USERS"/>
+
+		<UIRef Id="WixUI_InstallDir" />
+		<UIRef Id="WixUI_ErrorProgressText" />
+
+		<WixVariable Id="WixUILicenseRtf" Value="CLUF.rtf" />
+		<WixVariable Id="WixUIBannerBmp" Value="Installer Banner.jpg" />
+		<WixVariable Id="WixUIDialogBmp" Value="Installer Dialog.jpg" />
+
+		<CustomAction Id="LaunchTrayIcon" FileKey="DesktopModuleEXE" ExeCommand="/min" Return="asyncNoWait"></CustomAction>
+
+		<CustomAction Id="AddSSLCert"
+					  Directory="INSTALLDIR"
+					  ExeCommand="[SystemFolder]netsh.exe http add sslcert ipport=0.0.0.0:20202 certhash=7952706a9e878d54c0ba871e8019b0b117900e12 appid={214124cd-d05b-4309-9af9-9caa44b2b74a}"
+					  Return="ignore" Impersonate="no" Execute="deferred" />
+		<CustomAction Id="DeleteSSLCert"
+					  Directory="INSTALLDIR"
+					  ExeCommand="[SystemFolder]netsh.exe http delete sslcert ipport=0.0.0.0:20202"
+					  Return="ignore" Impersonate="no" Execute="deferred" />
+
+		<InstallExecuteSequence>
+			<Custom Action='LaunchTrayIcon' After='InstallFinalize'>NOT Installed</Custom>
+			<Custom Action="DeleteSSLCert" Before="InstallFinalize">Installed</Custom>
+			<Custom Action="AddSSLCert" Before="InstallFinalize">NOT Installed</Custom>
+		</InstallExecuteSequence>
+
+	</Product>
+</Wix>

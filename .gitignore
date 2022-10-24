@@ -1,0 +1,20 @@
+.vs/
+DesktopModule/.vs/
+DesktopModule/bin/
+DesktopModule/obj/
+
+DesktopModule Installer/bin/
+DesktopModule Installer/obj/
+
+Certificates/*.dll
+Certificates/*.exe
+Certificates/*.pem
+Certificates/*.req
+
+*.vsdx
+*.png
+*.pdf
+
+WebApplication/bin
+WebApplication/obj
+WebApplication/wwwroot/tempFiles

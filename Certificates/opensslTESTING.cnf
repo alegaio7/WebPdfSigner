@@ -1,0 +1,16 @@
+[req]
+distinguished_name = dn
+req_extensions = v3_req
+x509_extensions = v3_req
+prompt = no
+
+[dn]
+C=AR
+ST=Buenos Aires
+L=Buenos Aires
+O=MyTestingCert
+emailAddress=dummy@email.com
+CN=John Doe
+
+[v3_req]
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment, dataEncipherment

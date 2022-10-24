@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLDIR">
+			<Component Id="cmp910028084FE7F6817B29FBA6B1777A4B" Guid="*">
+				<File Id="fil2643EA1105F0C079ECE3F04C62A5C243" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\DesktopModule.deps.json" />
+			</Component>
+			<Component Id="cmp31628C9CCEB153F3A69D329F6DD31D74" Guid="*">
+				<File Id="fil3BE0B8F2E25C0BC10DE10342F77DB2E5" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\DesktopModule.dll" />
+			</Component>
+			<Component Id="cmp3846638F0C7DE2146EE8A32EA208255A" Guid="*">
+				<File Id="DesktopModuleEXE" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\DesktopModule.exe" />
+			</Component>
+			<Component Id="cmp5C10638A19A09646C7C0E147A0748231" Guid="*">
+				<File Id="fil6E6531819D342EACC156D6F4248D2FC6" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\DesktopModule.runtimeconfig.json" />
+			</Component>
+			<Component Id="cmp1BE21D90724DF0B75F0DD1D3D33CC81E" Guid="*">
+				<File Id="fil04C09EE802816D0E1D4E2CF5EFDF75C7" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\Microsoft.Extensions.Configuration.EnvironmentVariables.dll" />
+			</Component>
+			<Component Id="cmp594F24AEF95ABB04BE4D3708FE996DB3" Guid="*">
+				<File Id="fil212A10A47256A218E73D2EFD08223575" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll" />
+			</Component>
+			<Component Id="cmp751F9B6DD4D2A91D5A70FD8891531D41" Guid="*">
+				<File Id="fil2A2FBE54B049D9F20BEFDE4AFAAD995B" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\Microsoft.Extensions.Hosting.dll" />
+			</Component>
+			<Component Id="cmpC48968AB23DA585465F8888A3E6A53C2" Guid="*">
+				<File Id="fil3A00B4775044873ADF511D75221019F4" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\Microsoft.OpenApi.dll" />
+			</Component>
+			<Component Id="cmp3DAD21E2688737BCE7061E07151DB75E" Guid="*">
+				<File Id="fil6CB91E5D8445A65720473D41C84798DD" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\Swashbuckle.AspNetCore.Swagger.dll" />
+			</Component>
+			<Component Id="cmp853BC3A436D3E37B864A670EE2CBC9FB" Guid="*">
+				<File Id="filB780425518A932976BB358FAAD34D327" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\Swashbuckle.AspNetCore.SwaggerGen.dll" />
+			</Component>
+			<Component Id="cmp2BC580E59356FD9D170506F0D6BABF8B" Guid="*">
+				<File Id="fil6281B672C4AB54AAD49F51E9AC2B2375" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\Swashbuckle.AspNetCore.SwaggerUI.dll" />
+			</Component>
+			<Directory Id="dir9901A63403F617629D713CCDD5F76555" Name="en">
+				<Component Id="cmpE37610A301A01F0A65094F3209291A7E" Guid="*">
+					<File Id="filFB01B446F439E0CD038C40E96A122F7F" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\en\DesktopModule.resources.dll" />
+				</Component>
+			</Directory>
+			<Directory Id="dir63A634F9A8BE5EC5B8B7424D6A18E4C4" Name="es">
+				<Component Id="cmp8D131BE63078A2006221C88002219E97" Guid="*">
+					<File Id="filBD28178268FCA5FE8B25A60C48ED664A" KeyPath="yes" Source="..\DesktopModule\bin\Release\net6.0-windows\es\DesktopModule.resources.dll" />
+				</Component>
+			</Directory>
+		</DirectoryRef>
+    </Fragment>
+    <Fragment>
+		<ComponentGroup Id="ModuleFiles">
+			<ComponentRef Id="cmp910028084FE7F6817B29FBA6B1777A4B" />
+			<ComponentRef Id="cmp31628C9CCEB153F3A69D329F6DD31D74" />
+			<ComponentRef Id="cmp3846638F0C7DE2146EE8A32EA208255A" />
+			<ComponentRef Id="cmp5C10638A19A09646C7C0E147A0748231" />
+			<ComponentRef Id="cmp1BE21D90724DF0B75F0DD1D3D33CC81E" />
+			<ComponentRef Id="cmp594F24AEF95ABB04BE4D3708FE996DB3" />
+			<ComponentRef Id="cmp751F9B6DD4D2A91D5A70FD8891531D41" />
+			<ComponentRef Id="cmpC48968AB23DA585465F8888A3E6A53C2" />
+			<ComponentRef Id="cmp3DAD21E2688737BCE7061E07151DB75E" />
+			<ComponentRef Id="cmp853BC3A436D3E37B864A670EE2CBC9FB" />
+			<ComponentRef Id="cmp2BC580E59356FD9D170506F0D6BABF8B" />
+			<ComponentRef Id="cmpE37610A301A01F0A65094F3209291A7E" />
+			<ComponentRef Id="cmp8D131BE63078A2006221C88002219E97" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>
