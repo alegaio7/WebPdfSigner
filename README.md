@@ -6,13 +6,13 @@ A desktop module that runs in the background and allows a browser to digitally s
 ## Features
 
 - Use any locally installed certificate (digital or hardware tokens) to sign pdf files uploaded with the browser.
-- Sends only hashed for signing, instead of complete files, to boost performance and protect PDFs from traveling between endpoints.
+- Sends only hashes for signing, instead of complete files, to boost performance and protect PDFs from traveling between endpoints.
 - Signed files are automatically downloaded from the web page.
 
 ## Components
 The solution is made up of 3 projects:
 - The windows application desktop module (WinForms)
-- The web application: handles file uploads and performs the signature preparation (hash calculation) and completion (embedding signed hash into the prepared file).
+- The web application: handles file uploads and performs the signature preparation (hash calculation) and completion (embedding the signed hash into the prepared file).
 - An installer project to generate the module setup (and .msi installer)
 
 ## Software used
@@ -28,7 +28,7 @@ The desktop module solution uses the following software stack:
 
 Build the solution in release mode and run the generated .msi installer.
 
-The setup package installs the desktop module and configures it to autorun after Windows login.
+The setup package installs the desktop module and configures it to autorun after the Windows login.
 
 The setup also installs a couple of certificates needed for SSL communication between the desktop module and the page from the web project.
 
